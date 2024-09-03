@@ -8,10 +8,15 @@ const TimeTablePreview = (props) => {
  
 
   return (
-    <div className="time-table-preview">
-      <table className="time-table" border={1}>
+    <div className="att-sheet"
+            style={{ width:'100%',marginTop:'20px',marginBottom:'20px' }}
+     >
+       <div
+            className="att-record"
+          >
+      <table className="sheet" border={1}>
         <thead>
-          <tr className="time-head-row">
+          <tr className="sheet-head">
             <th>Day</th>
             <th>
               <span>1</span>
@@ -57,7 +62,7 @@ const TimeTablePreview = (props) => {
         </thead>
         <tbody>
           {timeTable.map((item, index) => (
-            <tr className="time-row" key={index}>
+            <tr className="sheet-body" key={index}>
             <td>{item.day}</td>
             <td>
               <div className="subject">
@@ -111,6 +116,7 @@ const TimeTablePreview = (props) => {
           ))}
         </tbody>
       </table>
+    </div>
     </div>
   );
 };

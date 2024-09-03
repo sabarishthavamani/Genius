@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import { setAuthRec, setAuthRecSTD, setAuthToken, setAuthRecParent, setAuthRecDriver } from '../lib/localstorage';
-import toastAlert from '../lib/toast';
 import { teacherlogin } from '../actions/teacherAction';
-import { setAuthorization } from '../config/axios';
-import isEmpty from 'is-empty';
 import { studentLogin } from '../actions/student.action';
 import { parentlogin } from '../actions/parentAction';
 import { driverlogin } from '../actions/driverAction';
+import { setAuthorization } from '../config/axios';
+import isEmpty from 'is-empty';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const initialFormValue = {
   identifier: '',
@@ -32,7 +33,6 @@ const StudentLogin = () => {
   };
 
   const handleSubmit = async () => {
-    // Define the login attempts
     const loginAttempts = [
       studentLogin({ email: identifier, password }).then(result => ({ type: 'student', result })),
       teacherlogin({ teacherId: identifier, password }).then(result => ({ type: 'teacher', result })),
@@ -40,10 +40,8 @@ const StudentLogin = () => {
       driverlogin({ driverId: identifier, password }).then(result => ({ type: 'driver', result }))
     ];
 
-    // Execute all login attempts concurrently
     const results = await Promise.allSettled(loginAttempts);
 
-    // Process the results
     let loginSuccess = false;
     let errorMessages = [];
 
@@ -57,7 +55,8 @@ const StudentLogin = () => {
           setErrors({});
           setAuthToken(`Bearer ${token}`);
           setAuthorization(`Bearer ${token}`);
-          toastAlert('success', `Logged in successfully as ${type}`);
+
+          toast.success(`Logged in successfully as ${type}`);
 
           switch (type) {
             case 'student':
@@ -98,30 +97,27 @@ const StudentLogin = () => {
       }
     }
 
-    // If no login succeeded, show an error message
     if (!loginSuccess) {
-      toastAlert('error', errorMessages.join('. '));
+      toast.error(errorMessages.join('. '));
     }
   };
 
-  const isValid = (errName) => {
-    return !isEmpty(errName);
-  };
+  const isValid = (errName) => !isEmpty(errName);
 
   return (
     <div className="container1">
       <div className="leftcontent">
-        <img className="ellipse" src="images/Ellipse 17.svg" />
-        <img className="ell" src="images/Ellipse 17.png" />
-        <img className="tech" src="images/Kids Studying from Home-pana 1.svg" />
+        <img className="ellipse" src="images/Ellipse 17.svg" alt="Ellipse" />
+        <img className="ell" src="images/Ellipse 17.png" alt="Ellipse" />
+        <img className="tech" src="images/Kids Studying from Home-pana 1.svg" alt="Kids Studying" />
       </div>
       <div className="rightcontent">
         <div className="sign-in">
           <form className="loginform">
             <div className="logo">
-              <img src="images/Polygon 3.svg" />
+              <img src="images/Polygon 3.svg" alt="Logo" />
               <span>
-                <h2>SchoolPrj</h2>
+                <h2>SchoolHub</h2>
               </span>
             </div>
             <h3>User Login</h3>
@@ -156,9 +152,10 @@ const StudentLogin = () => {
             <button type="button" className="log" onClick={handleSubmit}>Login</button>
           </form>
         </div>
-        <p>Don't Have an Account..?<Link to={'/student-signup'}>SignUp Here</Link></p>
-        <p>Forget Password..?<Link to={'/student-forgetpassword'}>Click Here</Link></p>
+        <p>Don't Have an Account..? <Link to={'/student-signup'}>SignUp Here</Link></p>
+        <p>Forget Password..? <Link to={'/student-forgetpassword'}>Click Here</Link></p>
       </div>
+      <ToastContainer />
     </div>
   );
 };

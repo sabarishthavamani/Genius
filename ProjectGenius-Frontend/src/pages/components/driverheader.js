@@ -106,7 +106,7 @@ const DriverHeader = () => {
           src={`${process.env.PUBLIC_URL}/images/Polygon 3.png`}
           alt="logo"
         />
-        <span>SchoolPrj</span>
+        <span>Genius</span>
       </div>
 
       <div className="scl-std" onClick={detailHandler}>

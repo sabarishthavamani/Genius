@@ -54,11 +54,15 @@ const HomeWorkPreview = (props) => {
 
 
   return (
-    <div className="fee-collection" style={{ maxHeight: "200px", overflowY: "scroll" }} >
-    <div className="time-table-preview" >
-      <table className="time-table" border={1}>
+    <div className="att-sheet"
+            style={{ width:'100%',marginTop:'20px',marginBottom:'20px' }}
+     >
+       <div
+            className="att-record"
+          >
+      <table className="sheet" border={1}>
         <thead style={{ position: "sticky", top: 0, backgroundColor: "white" }}>
-          <tr className="time-head-row">
+          <tr className="sheet-head">
             <th>S.No</th>
             <th>Class</th>
             <th>Section</th>
@@ -74,7 +78,7 @@ const HomeWorkPreview = (props) => {
           {homeWorkList &&
             homeWorkList.length > 0 &&
             homeWorkList .sort((a, b) => new Date(a.assignDate) - new Date(b.assignDate)).map((item, key) => (
-              <tr className="std-row"  key={key}>
+              <tr className="sheet-body"  key={key}>
                 <td>{key + 1}</td>
                 {item.homeWork.map((hw, idx) => (
                   <React.Fragment key={idx}>
@@ -117,7 +121,7 @@ const HomeWorkPreview = (props) => {
                                 )}
                               </>
                             ) : (
-                              <p><span>No files uploaded</span></p>
+                              <p>No files uploaded</p>
                             )}
                           </td>
                   </React.Fragment>
@@ -144,8 +148,7 @@ const HomeWorkPreview = (props) => {
               </tr>
             ))}
         </tbody>
-      </table>
-    
+      </table>    
     </div>
     </div>
   );

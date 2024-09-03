@@ -35,7 +35,7 @@ const TeacherSidebar = () => {
                   ? { backgroundColor: "#f9f6b8" }
                   : {}
               }
-              onClick={() => toggleMenu()}
+              onClick={() => toggleMenu()}  // This closes the sidebar when clicking "Dashboard"
             >
               <Link to="/teacher-dashboard">
                 <img
@@ -55,10 +55,7 @@ const TeacherSidebar = () => {
                   ? { backgroundColor: "#f9f6b8" }
                   : {}
               }
-              onClick={() => {
-                toggleMenu();
-                setDropdownExpanded(!dropdownExpanded);
-              }}
+              onClick={() => setDropdownExpanded(!dropdownExpanded)}  // Only expand or collapse dropdown
             >
               <Link className="report">
                 <img
@@ -84,6 +81,7 @@ const TeacherSidebar = () => {
                       ? { backgroundColor: "#f9f6b8" }
                       : {}
                   }
+                  onClick={() => toggleMenu()}  // Close sidebar after clicking
                 >
                   <Link to="/teacher-attendance" className="report ms-3">
                     <span>
@@ -100,6 +98,7 @@ const TeacherSidebar = () => {
                       ? { backgroundColor: "#f9f6b8" }
                       : {}
                   }
+                  onClick={() => toggleMenu()}  // Close sidebar after clicking
                 >
                   <Link to="/student-timetable/:id" className="report ms-3">
                     <span>
@@ -109,7 +108,6 @@ const TeacherSidebar = () => {
                   </Link>
                 </p>
 
-
                 <p
                   className="am"
                   style={
@@ -117,6 +115,7 @@ const TeacherSidebar = () => {
                       ? { backgroundColor: "#f9f6b8" }
                       : {}
                   }
+                  onClick={() => toggleMenu()}  // Close sidebar after clicking
                 >
                   <Link to="/parents-meeting" className="report ms-3">
                     <span>
@@ -126,7 +125,6 @@ const TeacherSidebar = () => {
                   </Link>
                 </p>
 
-
                 <p
                   className="am"
                   style={
@@ -134,6 +132,7 @@ const TeacherSidebar = () => {
                       ? { backgroundColor: "#f9f6b8" }
                       : {}
                   }
+                  onClick={() => toggleMenu()}  // Close sidebar after clicking
                 >
                   <Link to="/student-homework" className="report ms-3">
                     <span>
@@ -142,6 +141,7 @@ const TeacherSidebar = () => {
                     Home Work
                   </Link>
                 </p>
+
                 <p
                   className="am"
                   style={
@@ -149,9 +149,7 @@ const TeacherSidebar = () => {
                       ? { backgroundColor: "#f9f6b8" }
                       : {}
                   }
-                  onClick={(e) => {
-                    e.stopPropagation(); // Prevent the event from propagating to the parent element
-                  }}
+                  onClick={() => toggleMenu()}  // Close sidebar after clicking
                 >
                   <Link to="/teacher-generatecard" className="report ms-3">
                     <span>
@@ -161,7 +159,6 @@ const TeacherSidebar = () => {
                   </Link>
                 </p>
 
-
                 <p
                   className="am"
                   style={
@@ -169,9 +166,7 @@ const TeacherSidebar = () => {
                       ? { backgroundColor: "#f9f6b8" }
                       : {}
                   }
-                  onClick={(e) => {
-                    e.stopPropagation(); // Prevent the event from propagating to the parent element
-                  }}
+                  onClick={() => toggleMenu()}  // Close sidebar after clicking
                 >
                   <Link to="/teacher-marksheet" className="report ms-3">
                     <span>
@@ -180,7 +175,6 @@ const TeacherSidebar = () => {
                     Marksheet Edit
                   </Link>
                 </p>
-
               </>
             )}
           </div>
@@ -194,6 +188,7 @@ const TeacherSidebar = () => {
                   ? { backgroundColor: "#f9f6b8" }
                   : {}
               }
+              onClick={() => toggleMenu()}  // Close sidebar after clicking
             >
               <Link to="/teacherleaveappliedlist" className="child">
                 <span>
@@ -203,7 +198,6 @@ const TeacherSidebar = () => {
               </Link>
             </p>
 
-
             <p
               className="am"
               style={
@@ -211,6 +205,7 @@ const TeacherSidebar = () => {
                   ? { backgroundColor: "#f9f6b8" }
                   : {}
               }
+              onClick={() => toggleMenu()}  // Close sidebar after clicking
             >
               <Link to="/profile-details" className="child">
                 <span>
@@ -219,9 +214,6 @@ const TeacherSidebar = () => {
                 Profile
               </Link>
             </p>
-
-           
-
           </div>
         </div>
         <button

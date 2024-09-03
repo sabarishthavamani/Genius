@@ -81,7 +81,7 @@ const ParentLogin = () => {
             <div className="logo">
               <img src="images/Polygon 3.svg" />
               <span>
-                <h2>SchoolPrj</h2>
+                <h2>SchoolHub</h2>
               </span>
             </div>
             <h3>Parent Sign In</h3>

@@ -77,7 +77,7 @@ const TeacherResetpassword = () => {
               <div className="logo">
                 <img src={`${process.env.PUBLIC_URL}/images/Polygon 3.svg`} alt=''/>
                 <span>
-                  <h2>Genius</h2>
+                  <h2>SchoolHub</h2>
                 </span>
               </div>
               <h3>Reset Password</h3>

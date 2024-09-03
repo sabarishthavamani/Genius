@@ -99,7 +99,7 @@ const StudentAttendance = () => {
 
   const handleSubmit = async () => {
     if (data && data.length > 0) {
-      console.log(data, "ljwcr");
+      console.log(data, "data...");
       // Create an array to hold attendance data
       const attendanceData = data[0].students.map((item) => ({
         studentName: item.name,

@@ -1233,7 +1233,7 @@ export const leaveAllocate = async(formData)=>{
 export const leaveAllocateDisplay = async()=>{
   try{
     let respData = await axios({
-      url:"/leaveDisplay",
+      url:"/allocationFieldDisplay",
       method:"get",
     
     

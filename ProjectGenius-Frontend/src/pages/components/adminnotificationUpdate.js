@@ -58,7 +58,7 @@ const AdminnotificationUpdate = () => {
       <Sidebar />
       <div className="fee-content">
         <div className="l-header">
-          <p>Genius Circular</p>
+          <p>SchoolHub Circular</p>
         </div>
         <div className="fee-setup">
           <div className="fee-setup-header">

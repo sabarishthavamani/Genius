@@ -22,7 +22,7 @@ const DriverInfo = (props) => {
         <button className="close-btn" onClick={() => toggleDriverInfo(false)}>
           <FontAwesomeIcon icon={faXmark} />
         </button>
-        <div className="std-personal-info" id="information">
+        <div className="std-personal-info" id="information" style={{margin:'auto'}}>
           <div className="std-image">
             <img src={`${IMAGE_URL}/${driverphoto}`} alt="" />
           </div>
@@ -31,7 +31,7 @@ const DriverInfo = (props) => {
               {driverDetails.name}({role})
             </span>
           </div>
-          <div className="std-history">
+          <div className="std-history" style={{overflowY:'scroll'}}>
             <div className="std-name">
               <span>Licence Details</span>
             </div>

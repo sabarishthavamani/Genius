@@ -60,7 +60,8 @@ const LeaveSchedule = () => {
   const handleReset = async () => {
     const response1 = await leaveAllocateDisplay();
     const allData = response1.result;
-    const leaveDataExists = allData.find(
+    console.log(allData,'allData....');
+    const leaveDataExists = allData && allData.find(
       (data) => data.medicalLeave && data.casualLeave && data.paternityLeave
     );
     console.log(leaveDataExists, "previoussss...");
@@ -247,9 +248,8 @@ const LeaveSchedule = () => {
         const employeeData = allData.find(
           (data) =>
             data.employeeId === employee.teacherId ||
-            data.employeeId === employee.driverId
+            data.employeeId === employee.driverId   
         );
-
         if (
           !employeeData ||
           !("medicalLeave" in employeeData) ||
@@ -264,7 +264,6 @@ const LeaveSchedule = () => {
           casualLeave: parseInt(formValue.casualLeave),
           unpaidLeave: formValue.unpaidLeave,
         };
-
         let { status, message } = await casualLeaveAllocateEdit(formData2);
         if (status === false) {
           toastAlert("error", message);

@@ -27,6 +27,8 @@ import {
 import toastAlert from "../lib/toast";
 import { assignHomeWork, viewHomeWork } from "../actions/teacherAction";
 import HomeWorkPreview from "./components/homeworkpreview";
+import TeacherHeader from "./components/teachernavbar";
+import TeacherSidebar from "./components/teachersidebar";
 
 function AssignHomeWork() {
   //state
@@ -81,8 +83,6 @@ function AssignHomeWork() {
     classDetails();
   }, []);
 
-
-
   const classDetails = async () => {
     try {
       const teachClass = await findWholeClass();
@@ -118,8 +118,8 @@ function AssignHomeWork() {
   const handleClassChange = (e) => {
     const selectedClass = e.target.value;
     setSelectedClassview(selectedClass);
-    console.log(selectedClass,'selectedClass.....');
-  
+    console.log(selectedClass, "selectedClass.....");
+
     const selectedTeacherData = selectedTeacher.find((data) =>
       data.status.some(
         (status) =>
@@ -127,14 +127,14 @@ function AssignHomeWork() {
           status.section === selectedSectionview
       )
     );
-  
+
     if (selectedTeacherData) {
       const sections = selectedTeacherData.status
         .filter((status) => status.className === selectedClass)
         .map((status) => status.section);
-  
-      setSelectedSectionview(sections.length > 0 ? sections[0] : '');
-  
+
+      setSelectedSectionview(sections.length > 0 ? sections[0] : "");
+
       const subjects = selectedTeacherData.status
         .filter(
           (status) =>
@@ -147,7 +147,6 @@ function AssignHomeWork() {
       setTeachingSubject([]);
     }
   };
-  
 
   const handleSectionChange = (e) => {
     const selectedSection = e.target.value;
@@ -259,7 +258,6 @@ function AssignHomeWork() {
     const { name, files } = event.target;
     const selectedFile = files[0];
     setfileUploads(selectedFile);
-
   };
 
   const getPhotoName = () => {
@@ -271,130 +269,134 @@ function AssignHomeWork() {
       return "";
     }
   };
-  
+
   useEffect(() => {
     getIndividualData();
   }, []);
 
   return (
-    <div className="">
-      <div className="fee-collection">
-        <div className="teacher-details">
-          <div className="teacher-header">
-            <span>Assign Homework</span>
-          </div>
-          <form className="teacher-form">
-            {/* <div className="teach-box">
+    <div className="dashboard-page">
+      <TeacherHeader />
+      <div className="dashboard-main">
+        <TeacherSidebar />
+        <div className="dashboard-container">
+          <h2 className="dashboard-title">Student Schedule</h2>
+          <div
+            className="class-details"
+            style={{ width: "85%", borderRadius: "15px" }}
+          >
+            <form className="teacher-form">
+              {/* <div className="teach-box">
           <label htmlFor="teacherName">
             Teacher Name<sup>*</sup>
           </label>
           <input type="text" id="teacherName" value={teacherName}  />
         </div> */}
-            <div className="teach-box">
-              <label htmlFor="teacherId">
-                Teacher ID<sup>*</sup>
-              </label>
-              <input type="text" id="teacherId" value={teacherId} />
-            </div>
-            <div className="teach-box">
-              <label htmlFor="assignDate">
-                Assigned Date<sup>*</sup>
-              </label>
-              <input
-                type="date"
-                id="assignDate"
-                value={assignDate}
-                min={new Date().toISOString().split("T")[0]}
-                onChange={(e) => setassignDate(e.target.value)}
-              />
-            </div>
-            <div className="teach-box">
-              <label htmlFor="dueDate">
-                Due Date<sup>*</sup>
-              </label>
-              <input
-                type="date"
-                id="dueDate"
-                value={dueDate}
-                min={new Date().toISOString().split("T")[0]}
-                onChange={(e) => setDueDate(e.target.value)}
-              />
-            </div>
-            <div className="teach-box">
-              <label htmlFor="class">
-                Class<sup>*</sup>
-              </label>
-              <select
-                id="class"
-                value={selectedClassview}
-                onChange={handleClassChange}
-              >
-                <option value="">Select</option>
+              <div className="teach-box">
+                <label htmlFor="teacherId">
+                  Teacher ID<sup>*</sup>
+                </label>
+                <input type="text" id="teacherId" value={teacherId} />
+              </div>
+              <div className="teach-box">
+                <label htmlFor="assignDate">
+                  Assigned Date<sup>*</sup>
+                </label>
+                <input
+                  type="date"
+                  id="assignDate"
+                  value={assignDate}
+                  min={new Date().toISOString().split("T")[0]}
+                  onChange={(e) => setassignDate(e.target.value)}
+                />
+              </div>
+              <div className="teach-box">
+                <label htmlFor="dueDate">
+                  Due Date<sup>*</sup>
+                </label>
+                <input
+                  type="date"
+                  id="dueDate"
+                  value={dueDate}
+                  min={new Date().toISOString().split("T")[0]}
+                  onChange={(e) => setDueDate(e.target.value)}
+                />
+              </div>
+              <div className="teach-box">
+                <label htmlFor="class">
+                  Class<sup>*</sup>
+                </label>
+                <select
+                  id="class"
+                  value={selectedClassview}
+                  onChange={handleClassChange}
+                >
+                  <option value="">Select</option>
 
-                {selectedClass &&
-                  selectedClass.map((className) => (
-                    <option key={className} value={className}>
-                      {className}
-                    </option>
-                  ))}
-              </select>
-            </div>
-            <div className="teach-box">
-              <label htmlFor="section">
-                Section<sup>*</sup>
-              </label>
-              <select
-                id="section"
-                value={selectedSectionview}
-                onChange={handleSectionChange}
-              >
-                <option value="">Select</option>
-                {selectedSection &&
-                  selectedSection.map((sectionName) => (
-                    <option key={sectionName} value={sectionName}>
-                      {sectionName}
-                    </option>
-                  ))}
-              </select>
-            </div>
+                  {selectedClass &&
+                    selectedClass.map((className) => (
+                      <option key={className} value={className}>
+                        {className}
+                      </option>
+                    ))}
+                </select>
+              </div>
+              <div className="teach-box">
+                <label htmlFor="section">
+                  Section<sup>*</sup>
+                </label>
+                <select
+                  id="section"
+                  value={selectedSectionview}
+                  onChange={handleSectionChange}
+                >
+                  <option value="">Select</option>
+                  {selectedSection &&
+                    selectedSection.map((sectionName) => (
+                      <option key={sectionName} value={sectionName}>
+                        {sectionName}
+                      </option>
+                    ))}
+                </select>
+              </div>
 
-            <div className="teach-box">
-              <label htmlFor="subject">
-                Subject<sup>*</sup>
-              </label>
-              <select
-                id="subject"
-                value={selectedSubject}
-                onChange={(e) => setSelectedSubject(e.target.value)}
-              >
-                <option value="">Select</option>
-                {teachingSubject &&
-                  teachingSubject.map((sub) => (
-                    <option key={sub} value={sub}>
-                      {sub}
-                    </option>
-                  ))}
-              </select>
-            </div>
-            <div className="teach-box">
-              <label htmlFor="description">
-                Description<sup>*</sup>
-              </label>
-              <textarea
-                id="description"
-                value={descriptionContent}
-                onChange={(e) => setDescriptionContent(e.target.value)}
-                minLength={10}
-                style={{
-                  border: "1px solid #ccc",
-                  borderRadius: "5px",
-                  outline: "none",
-                  resize: "none",
-                  height: "70px",
-                }}
-              ></textarea>
-            </div>
-            {/* <div className="teach-box">
+              <div className="teach-box">
+                <label htmlFor="subject">
+                  Subject<sup>*</sup>
+                </label>
+                <select
+                  id="subject"
+                  value={selectedSubject}
+                  onChange={(e) => setSelectedSubject(e.target.value)}
+                >
+                  <option value="">Select</option>
+                  {teachingSubject &&
+                    teachingSubject.map((sub) => (
+                      <option key={sub} value={sub}>
+                        {sub}
+                      </option>
+                    ))}
+                </select>
+              </div>
+              <div className="teach-box">
+                <label htmlFor="description">
+                  Description<sup>*</sup>
+                </label>
+                <textarea
+                  id="description"
+                  value={descriptionContent}
+                  onChange={(e) => setDescriptionContent(e.target.value)}
+                  minLength={10}
+                  style={{
+                    border: "1px solid #ccc",
+                    borderRadius: "5px",
+                    outline: "none",
+                    resize: "none",
+                    height: "70px",
+                  }}
+                ></textarea>
+              </div>
+              {/* <div className="teach-box">
               <label htmlFor="fileUpload">
                 File Upload<sup>*</sup>
               </label>
@@ -427,7 +429,7 @@ function AssignHomeWork() {
                   )} 
                </label>
             </div>   */}
-            <div className="teach-box">
+              <div className="teach-box">
                 <label>Upload Files</label>
                 <input
                   type="file"
@@ -458,7 +460,8 @@ function AssignHomeWork() {
                   />
                 )}
               </div>
-          </form>
+            </form>
+          </div>
           <div className="sub-btnn">
             <button className="schedulesubmit" onClick={handlePreClick}>
               <FontAwesomeIcon icon={faArrowLeft} className="myarrow" />
@@ -472,12 +475,12 @@ function AssignHomeWork() {
               Submit
             </button>
           </div>
+          <HomeWorkPreview
+            homeWorkList={homeWorkList}
+            getIndividualData={getIndividualData}
+          />
         </div>
       </div>
-      <HomeWorkPreview
-        homeWorkList={homeWorkList}
-        getIndividualData={getIndividualData}
-      />
     </div>
   );
 }

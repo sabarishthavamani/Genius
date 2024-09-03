@@ -574,3 +574,13 @@
 
 
 
+@media (max-width:766px){
+    .teacher-schedule-controls {
+       
+        flex-direction: column;
+    }
+    
+    .teacher-schedule-controls button {
+        width: 100%;
+    }
+}

@@ -77,7 +77,7 @@ const DriverSignup = () => {
             <div className="logo">
               <img src="images/Polygon 3.svg" />
               <span>
-                <h2>Genius</h2>
+                <h2>SchoolHub</h2>
               </span>
             </div>
             <h3>Driver Sign Up</h3>

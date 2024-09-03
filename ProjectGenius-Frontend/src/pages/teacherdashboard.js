@@ -282,7 +282,6 @@ const TeacherDashboard = () => {
       console.log(response, "dtkjskk");
       if (data.status === true) {
         setleaveAllocate(data.result);
-        console.log(leaveAllocate, "getsingleallocate...");
       } else {
         toastAlert("error", data.message);
       }
@@ -290,6 +289,7 @@ const TeacherDashboard = () => {
       console.error(err);
     }
   };
+  console.log(leaveAllocate, "getsingleallocate...");
 
   useEffect(() => {
     const empID = JSON.parse(localStorage.getItem("TEACHER_DATA")).teacherId;

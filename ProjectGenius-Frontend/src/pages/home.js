@@ -5,8 +5,8 @@ const Home = () => {
   return (
     <div className="home">
     <div className="home-head">
-      <img src="images/Polygon 3.png" />
-    </div>
+      <img src="images/home-logo.png" />
+        </div>
     <div className="home-content">
       <div className="left-home">
         <div className="high-school">

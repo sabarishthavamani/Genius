@@ -44,7 +44,7 @@ const StudentHeader = () => {
           src={`${process.env.PUBLIC_URL}/images/Polygon 3.png`}
           alt="logo"
         />
-        <span>SchoolPrj</span>
+        <span>Genius</span>
       </div>
       <div className="scl-std" onClick={detailHandler}>
         <img src={studentInfo.photo} width={'40px'} height={'40px'} style ={{borderRadius:"50%"}}alt="student" />

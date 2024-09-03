@@ -327,6 +327,13 @@
   box-shadow: 4px 4px 5px #cacbcd;
   padding: 10px; /* Add padding for spacing */
 }
+
+@media (max-width:768px){
+    .std-history {
+        min-height: auto;
+    }
+}
+
 .std-history2 {
     width: 100%;
     font-size: 14px;
@@ -342,6 +349,7 @@
   display: flex;
   justify-content: space-between; /* Adjust space between items */
   margin: 10px 0px;
+  align-items: center;
 }
 
 /* .adrs i styles */

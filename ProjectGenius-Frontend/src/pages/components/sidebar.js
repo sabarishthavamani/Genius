@@ -19,7 +19,7 @@ const Sidebar = (props) => {
         <div className="logo-content">
           <div className="logo">
           <img src={`${process.env.PUBLIC_URL}/images/Polygon 3.png`} alt="" />
-            <span>Genius</span>
+            <span>SchoolHub</span>
           </div>
         </div>
         <ul>

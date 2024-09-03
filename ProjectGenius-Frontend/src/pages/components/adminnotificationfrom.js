@@ -88,7 +88,7 @@ const Adminnotificationfrom = ({ closePopup,handleFormSubmit }) => {
       }}
     >
       <div className="monthly-content">
-        <h2>Genius Circular</h2>
+        <h2>SchoolHub Circular</h2>
         <form>
           <div className="route-allocate-part-two">
             <div className="route-allocate-input">
